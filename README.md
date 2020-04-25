@@ -8,7 +8,3 @@ The main basic functional aspect I am aiming for is to have a search interface. 
 
 
 Since people usually appreciate visualizing data in a more artistic format, the bigger visual aspect being aimed for on top of having searchable information is to have this information interpreted into an SVG image map that can use colors and mapping to form a comprehensive understanding of how educational levels are spread throughout the country. This information can allow the end user to make assertations about other correlations that could possibly stem from this information, or perhaps just be all the wiser for knowing.
-
-## Link to Repository
-
-[Github Link](https://github.com/jksdk4/us-state-county-education-data.git)
