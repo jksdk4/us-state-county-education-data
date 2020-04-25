@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>US State & County Information Layout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="./script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>US State & County Informational Resources</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html" title="Home">Home</a>
+                </li>
+                <li>
+                <form>
+                    <select>
+                        <option>View by state...</option>
+                    </select>
+                    <input type="submit" name="statePg" id="statePg" value="Submit" class="btn btn-warning">
+                </form>
+                </li>
+                <li><a href="#">List Search</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form id="searchForm">
+            <h2>Search By:</h2>
+            <p>
+                <input type="radio" name="searchType" id="all" value="All" checked>
+                <label for="all">All</label>
+                <input type="radio" name="searchType" id="state" value="State">
+                <label for="state">State</label>
+                <input type="radio" name="searchType" id="county" value="County">
+                <label for="radio">County</label>
+            </p>
+            <p>
+                <label for="searchTerm">Name:</label>
+                <input type="text" name="searchTerm" id="searchTerm" value="">
+            </p>
+            <p>
+                <input type="submit" class="btn btn-primary">
+            </p>
+        </form>
+        <div id="searchResults">
+            <!-- listed search results should go in here... -->
+        </div>
+    </main>
+</body>
+</html>

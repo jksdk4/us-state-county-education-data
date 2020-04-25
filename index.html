@@ -4,87 +4,33 @@
   <meta charset="UTF-8">
   <title>US State & County Information Layout</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style type="text/css">
-  	body {
-  		font-family: Arial;
-  		padding-left: 2%;
-  		padding-right: 2%;
-  	}
-
-  	header {
-  		background-color: #c9c9c9;
-  		padding: 15px;
-  	}
-  	h1 {
-  		background-color: #bfed91;
-  		display: inline-block;
-  		padding: 10px;
-  	}
-  	  
-  	nav ul li {
-  		margin-right: 85px;
-  		display: inline-block;
-  	}
-  	nav ul li button {
-  		border-radius: 15px;
-  		font-family: Verdana;
-  	}
-  	button:hover {
-  		cursor: pointer;
-  	}
-  	nav a {
-  		text-decoration: none;
-  		color: initial;
-  	}
-  	nav li a:hover {
-  		text-decoration: underline;
-  	}
-  	nav li h1 a:hover {
-  		text-decoration: none;
-  	}
-  	#topic ul {
-  		margin-bottom: 30px;
-  		margin-top: 30px;
-  	}
-
-  	#topic ul li {
-  		display: inline-block;
-  		/*padding: 2%;*/
-  		margin-right: 85px;
-  		list-style-type: none;
-  	}
-  	.map {
-  		width: 85%;
-  		height: 400px;
-  		background-color: #ffccb4;
-  		margin: 0 auto;
-  	}
-  </style>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="./script.js"></script>
 </head>
 <body>
-<header>
-	<h1>US State & County Informational Resources</h1>
-	<nav>
-		<ul>
-			<li>
-				<a href="#" title="Home">Home</a>
-			</li>
-			<li>
-				<select>
-					<option>View by state...</option>
-					<option>AL</option>
-					<option>AK</option>
-					<option>AZ</option>
-				</select>
-				<button>GO</button>
-			</li>
-			<li><a href="#">List Search</a></li>
-		</ul>
-	</nav>
-</header>
+	<header>
+		<h1>US State & County Informational Resources</h1>
+		<nav>
+			<ul>
+				<li>
+					<a href="#" title="Home">Home</a>
+				</li>
+				<li>
+					<form>
+						<select>
+							<option>View by state...</option>
+						</select>
+						<input type="submit" name="statePg" id="statePg" value="Submit" class="btn btn-warning">
+					</form>
+				</li>
+				<li><a href="search.html">List Search</a></li>
+			</ul>
+		</nav>
+	</header>
 <main>
 	<div id="topic">
-		<h2>Percentage of Adults With {{variable here}}</h2>
+		<h2>Percentage of Adults With</h2>
 		<p>Choose an option to see various state demographics.</p>
 		<ul>
 			<li>
@@ -112,7 +58,5 @@
 
   <!-- CDN for D3 -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.1/d3.min.js'></script>
-  <script src="./script.js"></script>
-
 </body>
 </html>
