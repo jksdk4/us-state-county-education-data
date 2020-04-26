@@ -36,6 +36,10 @@ nav li a:hover {
     margin-right: 85px;
     list-style-type: none;
 }
+
+main ul {
+    text-align: center;
+}
 .map {
     width: 85%;
     height: 400px;

@@ -1,4 +1,4 @@
-function validateOnSumbit(searchFld, checkSelector){
+function validateOnSubmit(searchFld, checkSelector){
     if (searchFld.value == "" && checkSelector.value !== "All") {
         window.alert("Please enter something to search for in the search box.");
         return true;
@@ -6,14 +6,13 @@ function validateOnSumbit(searchFld, checkSelector){
     return false;
 }
 
-function loadSelectStateField(){
-    let stateListOpts = document.querySelector("select");
+function loadSelectStateField(stateListOpts){
     let fetchedStates = fetch("https://gist.githubusercontent.com/mshafrir/2646763/raw/8b0dbb93521f5d6889502305335104218454c2bf/states_titlecase.json");
     fetchedStates.then(function(response){
         response.json().then(function(json){
             stateListOptsStr = '';
             for (let i = 0; i < json.length; i++){
-                stateListOptsStr += `<option value="${json[i]}">${json[i].abbreviation}</option>`
+                stateListOptsStr += `<option>${json[i].abbreviation}</option>`
             }
             stateListOpts.innerHTML += stateListOptsStr;
         });
@@ -21,13 +20,27 @@ function loadSelectStateField(){
 }
 
 window.addEventListener("load", function(){
-    loadSelectStateField();
+    let stateListOptions = document.querySelector("select");
+    loadSelectStateField(stateListOptions);
 
+    // select state page
+    let stateOptions = document.querySelector("form");
+    stateOptions.addEventListener("submit", function(e){
+        let choice = stateListOptions.options[stateListOptions.selectedIndex];
+        if (choice.value.length > 2){
+            alert("Choose a state to continue.");
+            e.preventDefault();
+        } else {
+            // redirect to individual state page
+        }
+    });
+    
+    // search
     let searchForm = document.getElementById("searchForm");
     searchForm.addEventListener("submit", function(e) {
         let searchField = document.querySelector("input[name=searchTerm]");
         let checkedSelector = document.querySelector("input[name=searchType]:checked");
-        let noInput = validateOnSumbit(searchField, checkedSelector);
+        let noInput = validateOnSubmit(searchField, checkedSelector);
         if (noInput) {
             e.preventDefault();
         } else {
@@ -62,14 +75,6 @@ window.addEventListener("load", function(){
             });
         }
         e.preventDefault();
-
-
-        let stateOptions = document.querySelector("form");
-
-        stateOptions.addEventListener("submit", function(e){
-            // redirect to individual state page
-
-        });
         
     });
 });
