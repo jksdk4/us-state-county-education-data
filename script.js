@@ -1,5 +1,5 @@
-function validateOnSumbit(searchField){
-    if (searchField.value == "") {
+function validateOnSumbit(searchFld, checkSelector){
+    if (searchFld.value == "" && checkSelector.value !== "All") {
         window.alert("Please enter something to search for in the search box.");
         return true;
     }
@@ -13,7 +13,7 @@ function loadSelectStateField(){
         response.json().then(function(json){
             stateListOptsStr = '';
             for (let i = 0; i < json.length; i++){
-                stateListOptsStr += `<option>${json[i].abbreviation}</option>`
+                stateListOptsStr += `<option value="${json[i]}">${json[i].abbreviation}</option>`
             }
             stateListOpts.innerHTML += stateListOptsStr;
         });
@@ -26,7 +26,8 @@ window.addEventListener("load", function(){
     let searchForm = document.getElementById("searchForm");
     searchForm.addEventListener("submit", function(e) {
         let searchField = document.querySelector("input[name=searchTerm]");
-        let noInput = validateOnSumbit(searchField);
+        let checkedSelector = document.querySelector("input[name=searchType]:checked");
+        let noInput = validateOnSumbit(searchField, checkedSelector);
         if (noInput) {
             e.preventDefault();
         } else {
@@ -37,16 +38,23 @@ window.addEventListener("load", function(){
             fetchedStates.then(function(response){
                 response.json().then(function(json){
                     const results = document.getElementById("searchResults");
-                    resultsStr = "";
+                    let resultsStr = "";
                     for (let i = 0; i < json.length; i++){
                         // state shows by name or by postal abbrev
                         if (json[i].name.toLowerCase().includes(searchField.value.toLowerCase()) || json[i].abbreviation.includes(searchField.value.toUpperCase())){
                             resultsStr += `<p>${json[i].name}</p>`;
                         }
                     }
+                    let entry = searchField.value;
                     if (resultsStr == ""){
-                        results.innerHTML = `<p><strong>Nothing here!</strong></p>
-                        <p>The search returned no results.</p>`;
+                        if (checkedSelector.value == "All" && entry.length < 1){    // blank search & 'All' chosen
+                            for (let i = 0; i < json.length; i++){
+                                resultsStr += `<p>${json[i].name}</p>`;     // list everything
+                            }
+                        } else {    // none found, nonblank search & 'All' not checked
+                            results.innerHTML = `<p><strong>Nothing here!</strong></p>
+                            <p>The search returned no results.</p>`;
+                        }
                     } else {
                         results.innerHTML = resultsStr;
                     }
@@ -55,9 +63,12 @@ window.addEventListener("load", function(){
         }
         e.preventDefault();
 
+
         let stateOptions = document.querySelector("form");
-        stateOptions.addEventListener("submit", function(){
+
+        stateOptions.addEventListener("submit", function(e){
             // redirect to individual state page
+
         });
         
     });
