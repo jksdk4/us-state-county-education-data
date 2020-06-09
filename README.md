@@ -2,6 +2,10 @@
 
 ## About
 
+# This project is no longer being updated through this repository; check https://github.com/jksdk4/US-Educational-Attainment.git for the latest updates on this project
+
+
+
 This project is intended to use statistical datasets that can visually represent the rate in which certain educational levels have been achieved. The goal is to integrate a data visualization framework that can dynamically interpret the information into a web page depending on what option the user wants to see.
 
 The main basic functional aspect I am aiming for is to have a search interface. This way if a user wants to only see information for the state of Kansas, or perhaps wanted to see how many instances there are of a 'Jackson County' within the country, then the search tool interface should be able to provide this in a textual format. This can also be useful to someone who may want to quickly read something specific or may be unable to read a map.

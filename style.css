@@ -43,6 +43,21 @@ main ul {
 .map {
     width: 85%;
     height: 400px;
-    background-color: #ffccb4;
     margin: 0 auto;
+}
+
+.peach {
+    background-color: #ffccb4;
+}
+
+.chartreuse {
+    background-color: chartreuse;
+}
+
+.maroon {
+    background-color: maroon;
+}
+
+.lightcoral {
+    background-color: lightcoral;
 }
